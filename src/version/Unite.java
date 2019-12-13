@@ -105,6 +105,19 @@ public class Unite implements IUnite {
 		this.ressourceProd = ressourceProd;
 	}
 
+	@Override
+	public int typeToInt() {
+		switch(type) {
+		case BATIMENT:
+			return 0;
+		case UNITE:
+			return 1;
+		case TECHNOLOGIE:
+			return 2;
+		}
+		return 0;
+	}
+
 
 	
 }

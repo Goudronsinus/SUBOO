@@ -22,6 +22,8 @@ public interface IUnite {
 
 	
 	public version.Type getType();
+	
+	public int typeToInt();
 
 	
 	public List<IRessource> getRessourceProd();

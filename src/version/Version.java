@@ -1,9 +1,14 @@
 package version;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -28,8 +33,8 @@ public class Version implements IVersion {
 		try {
 			ressource = new ArrayList<>();
 			initialState = factory.EtatFactory.createEtat();
-			loadFile("C:/Users/goudr/git/SUBOO/v1.0.txt");
-			//loadFile("../../v1.0.txt");
+			//loadFile("C:/Users/goudr/git/SUBOO/v1.0.txt");
+			loadFile("v1.0.txt");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -82,9 +87,8 @@ public class Version implements IVersion {
 	}
 	
 	private void loadFile(String pathVersion) throws IOException {
-		
-		FileReader fr = new FileReader(pathVersion);
-		BufferedReader br = new BufferedReader(fr);
+		Path p = Paths.get("v1.0.txt");
+		BufferedReader br = new BufferedReader(new FileReader(p.toAbsolutePath().toFile()));
 		String line = br.readLine();
 		Scanner stream = new Scanner(line);
 		stream.useDelimiter(",");
@@ -219,7 +223,6 @@ public class Version implements IVersion {
 	}finally {
 		stream.close();
 		br.close();
-		fr.close();
 		}
 	}
 	
